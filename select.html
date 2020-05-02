@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .square{
+      height: 200px;
+      width: 200px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <select name="select" id="color">
+    <option value="white"> BLANCO</option>
+    <option value="black"> NEGRO</option>
+  </select>
+
+  <input type="checkbox" name="test" id="test" checked>
+
+  <div class="square" id="square">
+  </div>
+
+  <script>
+    let check = document.getElementById("test").checked
+    console.log(check)
+    let select = document.getElementById('color')
+    let square = document.getElementById('square')
+
+    select.addEventListener('change', () => {
+      square.style.backgroundColor = select.value
+    })
+  </script>
+</body>
+</html>

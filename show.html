@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrando datos de funciones</title>
+  <style>
+    .card-container{
+      display: flex;
+    }
+    .card{
+      box-shadow: 0px 0px 10px rgba(101, 101, 101, 0.388);
+      background: white;
+      border-radius: .25rem;
+      min-height: 100px;
+      margin: 1rem 0;
+    }
+    .card__title{
+      color: rgb(249, 249, 249);
+      border-bottom: 1px solid #eee;
+      padding: 1rem;
+      background: gray;
+    }
+    .card__body{
+      color: gray;
+      border-bottom: 1px solid #eee;
+      padding: 1rem;
+    }
+
+    .completed{
+      background: green;
+      color: white;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Titulo de las tarjetas</h1>
+  <div id="card-conteiner">
+    <!-- AQUI VAN LAS TARJETAS -->
+  </div>
+</body>
+
+<script>
+  fetch('https://jsonplaceholder.typicode.com/todos')
+  .then(response => response.json())
+  .then(json => {
+    let element = document.getElementById('card-conteiner')
+    console.log(json)
+
+    for (let i = 0; i < json.length; i++) {
+      const item = json[i]
+      const itemHtml = document.createElement('id')
+      itemHtml.innerHTML = `
+        <div class="card">
+          <div class="card__title" id="card-title">
+            ${item.title}
+          </div>
+          <div class="card__body
+            ${(item.completed)? 'completed' : ''}
+          ">
+            ${item.completed}
+          </div>
+        </div>
+      `
+      element.appendChild(itemHtml)
+    }
+
+    // title.innerText = `${json.title}`
+    // let completed = document.getElementById('completed')
+    // if (json.completed) {
+    //   completed.innerHTML = 'Esta Completado'
+    // } else {
+    //   completed.innerHTML = 'NO ESTA LISTO'
+    // }
+  })
+</script>
+</html>
